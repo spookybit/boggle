@@ -1,4 +1,4 @@
-const board = document.querySelector('board');
+const board = document.querySelector('.board');
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -26,13 +26,13 @@ const dice = ['aaafrs',
 'nootuw',
 'ooottu']
 
-function shake(dice){
+function shake(dice, board){
   const shuffled = shuffleDice(dice);
-  shuffled.forEach(dice => {
-    console.log(dice);
+  board.innerHTML = shuffled.map(dice => {
     const letter = rollDice(dice);
-    console.log(letter);
+    return `<span>${letter}</span>`
   })
+  console.log(board);
 }
 
 function rollDice(dice) {
@@ -47,4 +47,4 @@ function shuffleDice(diceArray) {
   return diceArray;
 }
 
-shake(dice);
+shake(dice, board);
