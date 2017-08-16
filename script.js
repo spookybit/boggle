@@ -30,9 +30,17 @@ const dice = ['aaafrs',
 function shake(dice, board){
   const shuffled = shuffleDice(dice);
   board.innerHTML = shuffled.map(dice => {
-    const letter = rollDice(dice).toUpperCase();
-    return `<span class="dice">${letter}</span>`
-  }).join('')
+    let letter = rollDice(dice).toUpperCase();
+    if (letter === "Q") {
+      letter = "Qu";
+    }
+    return `<span class="dice" data-clicked="false">${letter}</span>`
+  }).join('');
+  // console.log(board);
+  // board.forEach(dice => dice.addEventListener('click', console.log(dice)));
+  // let items = board.getElementsByTagName("span");
+  // console.log(items);
+  // items.forEach(dice => dice.addEventListener('click', console.log(dice)))
 }
 
 function rollDice(dice) {
