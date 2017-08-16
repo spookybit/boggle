@@ -1,4 +1,5 @@
 const board = document.querySelector('.board');
+const currentWord = document.querySelector('.currentWord');
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -31,8 +32,7 @@ function shake(dice, board){
   board.innerHTML = shuffled.map(dice => {
     const letter = rollDice(dice).toUpperCase();
     return `<span class="dice">${letter}</span>`
-  })
-  console.log(board);
+  }).join('')
 }
 
 function rollDice(dice) {

@@ -2,7 +2,16 @@ body {
   background-color: #F57921
 }
 
+.board {
+  border: 3px solid #FFCA08;
+  background-color: #398BD4;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 330px;
+}
+
 .dice {
+  margin: 6px;
   padding: 10 20 10 20;
   background-color: white;
   font-weight: 400;
