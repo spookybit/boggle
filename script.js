@@ -29,8 +29,8 @@ const dice = ['aaafrs',
 function shake(dice, board){
   const shuffled = shuffleDice(dice);
   board.innerHTML = shuffled.map(dice => {
-    const letter = rollDice(dice);
-    return `<span>${letter}</span>`
+    const letter = rollDice(dice).toUpperCase();
+    return `<span class="dice">${letter}</span>`
   })
   console.log(board);
 }
