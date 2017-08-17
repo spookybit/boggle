@@ -50,17 +50,11 @@ function toggleDice(e) {
     click(this, num);
   } else {
     let validMoves = nextValidMove(lastLetter[lastLetter.length - 1]);
-    console.log(lastLetter);
-    console.log(validMoves);
 
     if (lastLetter[lastLetter.length - 1] === num) {
       unclick(this, num);
-      console.log(lastLetter);
-      console.log(validMoves);
     } else if (validMoves.includes(num) && !lastLetter.includes(num)) {
-        if (this.dataset.clicked === "false") {
-          click(this, num);
-        }
+      click(this, num);
     }
   }
 }
@@ -72,9 +66,15 @@ function click(tag, num) {
 }
 
 function unclick(tag, num) {
-  lastLetter = lastLetter.splice(0, (lastLetter.length - 1));
+  let wordLength = currentWord.innerHTML.length;
+  lastLetter = lastLetter.slice(0, (lastLetter.length - 1));
+  
   tag.dataset.clicked = "false";
-  currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
+  if (currentWord.innerHTML.slice(wordLength - 2)  === "Qu") {
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -2);
+  } else {
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
+  }
 }
 
 function nextValidMove(num) {
