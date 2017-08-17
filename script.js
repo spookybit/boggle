@@ -1,5 +1,6 @@
 const board = document.querySelector('.board');
 const currentWord = document.querySelector('.currentWord');
+const table = document.querySelector('.wordTable');
 
 let lastLetter = [];
 
@@ -68,7 +69,7 @@ function click(tag, num) {
 function unclick(tag, num) {
   let wordLength = currentWord.innerHTML.length;
   lastLetter = lastLetter.slice(0, (lastLetter.length - 1));
-  
+
   tag.dataset.clicked = "false";
   if (currentWord.innerHTML.slice(wordLength - 2)  === "Qu") {
     currentWord.innerHTML = currentWord.innerHTML.slice(0, -2);
@@ -103,6 +104,26 @@ function shuffleDice(diceArray) {
     [diceArray[i-1], diceArray[j]] = [diceArray[j], diceArray[i-1]]
   }
   return diceArray;
+}
+
+function submit() {
+  let word = currentWord.innerHTML.slice(14);
+  let points = calcPoints(word);
+  table.innerHTML += `<tr>
+  <td>${word}</td>
+  <td>${points}</td>
+  </tr>`
+  currentWord.innerHTML = currentWord.innerHTML.slice(0,14);
+}
+
+function calcPoints(word) {
+  let length = word.length;
+  if (length <= 2) return 0;
+  if (length <= 4) return 1;
+  if (length === 5) return 2;
+  if (length === 6) return 3;
+  if (length === 7) return 5;
+  if (length >= 8) return 11;
 }
 
 shake(dice, board);
