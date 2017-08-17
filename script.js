@@ -49,9 +49,11 @@ function shake(dice, board){
 function toggleDice(e) {
   if (this.dataset.clicked === "true") {
     this.dataset.clicked = "false";
-    currentWord.innerHTML += this.innerHTML;
+    currentWord.innerHTML = currentWord.innerHTML.slice(0,(currentWord.innerHTML.length - 1));
+    // console.log(currentWord.innerHTML.slice(0, (currentWord.innerHTML.length - 1)))
   } else {
     this.dataset.clicked = "true";
+    currentWord.innerHTML += this.innerHTML;
   }
 
   // this[data-clicked]="true";
