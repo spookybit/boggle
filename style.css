@@ -1,9 +1,16 @@
 body {
-  background-color: #F57921
+  background-color: #F57921;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  margin-bottom: 20px;
 }
 
 .board {
-  border: 3px solid #FFCA08;
+  border: 5px solid #FFCA08;
   background-color: #398BD4;
   display: flex;
   flex-wrap: wrap;
@@ -17,6 +24,30 @@ body {
   font-weight: 400;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.wordTable {
+  background-color: white;
+  border: 5px solid #FFCA08;
+}
+
+.wordTable tr {
+  background-color: pink;
+  text-align: left;
+  /*border-bottom: 5px solid red;*/
+}
+
+.wordTable th, .wordTable td {
+  padding-left: 7px;
+}
+
+
+.wordTable th:nth-child(1), .wordTable td:nth-child(1){
+  width: 100px;
+}
+
+.wordTable th:nth-child(2), .wordTable td:nth-child(2){
+  padding: 5 5 5 5;
 }
 
 [data-clicked="true"] {
