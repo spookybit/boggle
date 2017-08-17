@@ -38,13 +38,8 @@ function shake(dice, board){
     }
     return `<span class="dice" data-clicked=false data-number=${parseInt(i)}>${letter}</span>`
   }).join('');
-  // console.log(board);
-  // board.forEach(dice => dice.addEventListener('click', console.log(dice)));
-  // let items = board.getElementsByTagName("span");
-  // console.log(items);
-  // items.forEach(dice => dice.addEventListener('click', console.log(dice)))
+
   const stuff = board.querySelectorAll(".dice")
-  // console.log(stuff);
   stuff.forEach(dice => dice.addEventListener('click', toggleDice));
 }
 
@@ -68,6 +63,7 @@ function toggleDice(e) {
 }
 
 function nextValidMove(num) {
+  num = parseInt(num);
   let validArray = [];
   // validArray.push(num + 5);
   // validArray.push(num - 5);
@@ -78,13 +74,16 @@ function nextValidMove(num) {
   // validArray.push(num - 6);
   // validArray.push(num - 4);
   // console.log(num);
-  // if (num === 1) console.log(num);
-  if (num <= 4) validArray.push(num - 5);
-  // unless (num >= 19) validArray.push(num + 5);
-  // unless (num === 4 || num === 9 || num === 14 || num === 19 || num ===24) validArray.push(num + 1);
-  // unless (num === 0 || num === 5 || num === 10 || num === 15 || num ===20) validArray.push(num - 1);
 
-  console.log(validArray);
+  if (!(num <= 4)) validArray.push(num - 5);
+  if (!(num <= 4) && !(num === 4 || num === 9 || num === 14 || num === 19 || num ===24)) validArray.push(num - 4);
+  if (!(num <= 4) && !(num === 0 || num === 5 || num === 10 || num === 15 || num ===20)) validArray.push(num - 6);
+  if (!(num >= 20)) validArray.push(num + 5);
+  if (!(num >= 20) && !(num === 4 || num === 9 || num === 14 || num === 19 || num ===24)) validArray.push(num + 6);
+  if (!(num >= 20) && !(num === 0 || num === 5 || num === 10 || num === 15 || num ===20)) validArray.push(num + 4);
+  if (!(num === 4 || num === 9 || num === 14 || num === 19 || num ===24)) validArray.push(num + 1);
+  if (!(num === 0 || num === 5 || num === 10 || num === 15 || num ===20)) validArray.push(num - 1);
+  
   return validArray;
 }
 
