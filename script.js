@@ -34,13 +34,27 @@ function shake(dice, board){
     if (letter === "Q") {
       letter = "Qu";
     }
-    return `<span class="dice" data-clicked="false">${letter}</span>`
+    return `<span class="dice" data-clicked=false>${letter}</span>`
   }).join('');
   // console.log(board);
   // board.forEach(dice => dice.addEventListener('click', console.log(dice)));
   // let items = board.getElementsByTagName("span");
   // console.log(items);
   // items.forEach(dice => dice.addEventListener('click', console.log(dice)))
+  const stuff = board.querySelectorAll(".dice")
+  // console.log(stuff);
+  stuff.forEach(dice => dice.addEventListener('click', toggleDice));
+}
+
+function toggleDice(e) {
+  if (this.dataset.clicked === "true") {
+    this.dataset.clicked = "false";
+    currentWord.innerHTML += this.innerHTML;
+  } else {
+    this.dataset.clicked = "true";
+  }
+
+  // this[data-clicked]="true";
 }
 
 function rollDice(dice) {
