@@ -3,6 +3,7 @@ const currentWord = document.querySelector('.currentWord');
 const table = document.querySelector('.wordTable');
 
 let lastLetter = [];
+let curWord = "";
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -37,7 +38,7 @@ function shake(dice, board){
     if (letter === "Q") {
       letter = "Qu";
     }
-    return `<span class="dice" data-clicked=false data-number=${parseInt(i)}>${letter}</span>`
+    return `<span class="dice" data-clicked=false data-number=${parseInt(i)}><span class="letter">${letter}</span></span>`
   }).join('');
 
   const stuff = board.querySelectorAll(".dice")

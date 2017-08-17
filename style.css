@@ -5,8 +5,16 @@ body {
   flex-direction: column;
 }
 
+.container {
+  width: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 img {
   margin-bottom: 20px;
+  align-self: center;
 }
 
 .board {
@@ -18,23 +26,42 @@ img {
 }
 
 .dice {
-  margin: 6px;
-  padding: 10 20 10 20;
+  margin: 9px;
+  width: 48px;
+  height: 48px;
   background-color: white;
-  font-weight: 400;
+  text-align: center;
+
+  font-weight: bolder;
+  line-height: 1;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.letter {
+  vertical-align: middle;
+  /*display: block;*/
+  margin-top: 37%;
+}
+
+.word {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20 0 20 0;
+  font-weight: bold;
+}
+
 .wordTable {
-  background-color: white;
-  border: 5px solid #FFCA08;
+  background-color: #FFCA08;
+  /*border: 5px solid #FFCA08;*/
+  align-self: left;
 }
 
 .wordTable tr {
-  background-color: pink;
+  background-color: white;
   text-align: left;
-  /*border-bottom: 5px solid red;*/
+  border: 5px solid red;
 }
 
 .wordTable th, .wordTable td {
