@@ -109,11 +109,16 @@ function shuffleDice(diceArray) {
 function submit() {
   let word = currentWord.innerHTML.slice(14);
   let points = calcPoints(word);
+
   table.innerHTML += `<tr>
   <td>${word}</td>
   <td>${points}</td>
   </tr>`
+
   currentWord.innerHTML = currentWord.innerHTML.slice(0,14);
+  lastLetter = [];
+  let dice = board.querySelectorAll('.dice');
+  dice.forEach(dice => dice.dataset.clicked = "false");
 }
 
 function calcPoints(word) {
