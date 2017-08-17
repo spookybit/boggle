@@ -45,14 +45,18 @@ function shake(dice, board){
 
 function toggleDice(e) {
   let num = parseInt(this.dataset.number);
-  
+
   if (lastLetter.length === 0) {
     click(this, num);
   } else {
     let validMoves = nextValidMove(lastLetter[lastLetter.length - 1]);
+    console.log(lastLetter);
+    console.log(validMoves);
 
     if (lastLetter[lastLetter.length - 1] === num) {
       unclick(this, num);
+      console.log(lastLetter);
+      console.log(validMoves);
     } else if (validMoves.includes(num) && !lastLetter.includes(num)) {
         if (this.dataset.clicked === "false") {
           click(this, num);
@@ -68,7 +72,7 @@ function click(tag, num) {
 }
 
 function unclick(tag, num) {
-  lastLetter = lastLetter.splice(0, - 1);
+  lastLetter = lastLetter.splice(0, (lastLetter.length - 1));
   tag.dataset.clicked = "false";
   currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
 }
