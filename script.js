@@ -1,6 +1,8 @@
 const board = document.querySelector('.board');
 const currentWord = document.querySelector('.currentWord');
 
+let lastLetter = "";
+
 const dice = ['aaafrs',
 'aaeeee',
 'aafirs',
@@ -29,12 +31,12 @@ const dice = ['aaafrs',
 
 function shake(dice, board){
   const shuffled = shuffleDice(dice);
-  board.innerHTML = shuffled.map(dice => {
+  board.innerHTML = shuffled.map((dice, i) => {
     let letter = rollDice(dice).toUpperCase();
     if (letter === "Q") {
       letter = "Qu";
     }
-    return `<span class="dice" data-clicked=false>${letter}</span>`
+    return `<span class="dice" data-clicked=false data-number=${i}>${letter}</span>`
   }).join('');
   // console.log(board);
   // board.forEach(dice => dice.addEventListener('click', console.log(dice)));
@@ -47,10 +49,12 @@ function shake(dice, board){
 }
 
 function toggleDice(e) {
+  if (lastLetter.length === 0) {
+
+  }
   if (this.dataset.clicked === "true") {
     this.dataset.clicked = "false";
-    currentWord.innerHTML = currentWord.innerHTML.slice(0,(currentWord.innerHTML.length - 1));
-    // console.log(currentWord.innerHTML.slice(0, (currentWord.innerHTML.length - 1)))
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
   } else {
     this.dataset.clicked = "true";
     currentWord.innerHTML += this.innerHTML;
