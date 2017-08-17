@@ -1,7 +1,7 @@
 const board = document.querySelector('.board');
 const currentWord = document.querySelector('.currentWord');
 
-let lastLetter = "";
+let lastLetter = [];
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -36,7 +36,7 @@ function shake(dice, board){
     if (letter === "Q") {
       letter = "Qu";
     }
-    return `<span class="dice" data-clicked=false data-number=${i}>${letter}</span>`
+    return `<span class="dice" data-clicked=false data-number=${parseInt(i)}>${letter}</span>`
   }).join('');
   // console.log(board);
   // board.forEach(dice => dice.addEventListener('click', console.log(dice)));
@@ -56,11 +56,36 @@ function toggleDice(e) {
     this.dataset.clicked = "false";
     currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
   } else {
+    // console.log(nextValidMove(this.dataset.number));
+    // console.log(parseInt(this.dataset.number));
+    nextValidMove(this.dataset.number);
     this.dataset.clicked = "true";
     currentWord.innerHTML += this.innerHTML;
+    lastLetter.push(this.dataset.number);
   }
 
   // this[data-clicked]="true";
+}
+
+function nextValidMove(num) {
+  let validArray = [];
+  // validArray.push(num + 5);
+  // validArray.push(num - 5);
+  // validArray.push(num + 1);
+  // validArray.push(num - 5);
+  // validArray.push(num + 6);
+  // validArray.push(num + 4);
+  // validArray.push(num - 6);
+  // validArray.push(num - 4);
+  // console.log(num);
+  // if (num === 1) console.log(num);
+  if (num <= 4) validArray.push(num - 5);
+  // unless (num >= 19) validArray.push(num + 5);
+  // unless (num === 4 || num === 9 || num === 14 || num === 19 || num ===24) validArray.push(num + 1);
+  // unless (num === 0 || num === 5 || num === 10 || num === 15 || num ===20) validArray.push(num - 1);
+
+  console.log(validArray);
+  return validArray;
 }
 
 function rollDice(dice) {
