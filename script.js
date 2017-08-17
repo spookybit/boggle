@@ -110,15 +110,32 @@ function submit() {
   let word = currentWord.innerHTML.slice(14);
   let points = calcPoints(word);
 
-  table.innerHTML += `<tr>
+  // table.innerHTML += `<tr>
+  // <td>${word}</td>
+  // <td class="points">${points}</td>
+  // </tr>`
+
+  let row = table.insertRow(1);
+
+  row.innerHTML = `<tr>
   <td>${word}</td>
-  <td>${points}</td>
+  <td class="points">${points}</td>
   </tr>`
+
 
   currentWord.innerHTML = currentWord.innerHTML.slice(0,14);
   lastLetter = [];
   let dice = board.querySelectorAll('.dice');
   dice.forEach(dice => dice.dataset.clicked = "false");
+
+  let totalPoints = 0;
+  let allPoints = table.querySelectorAll('.points');
+  allPoints.forEach(row => totalPoints += parseInt(row.innerHTML));
+
+  let total = table.querySelector('.total');
+  total.innerHTML = totalPoints;
+
+
 }
 
 function calcPoints(word) {
