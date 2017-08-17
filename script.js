@@ -44,36 +44,38 @@ function shake(dice, board){
 }
 
 function toggleDice(e) {
+  let num = parseInt(this.dataset.number);
+  
   if (lastLetter.length === 0) {
-
-  }
-  if (this.dataset.clicked === "true") {
-    this.dataset.clicked = "false";
-    currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
+    click(this, num);
   } else {
-    // console.log(nextValidMove(this.dataset.number));
-    // console.log(parseInt(this.dataset.number));
-    nextValidMove(this.dataset.number);
-    this.dataset.clicked = "true";
-    currentWord.innerHTML += this.innerHTML;
-    lastLetter.push(this.dataset.number);
-  }
+    let validMoves = nextValidMove(lastLetter[lastLetter.length - 1]);
 
-  // this[data-clicked]="true";
+    if (lastLetter[lastLetter.length - 1] === num) {
+      unclick(this, num);
+    } else if (validMoves.includes(num) && !lastLetter.includes(num)) {
+        if (this.dataset.clicked === "false") {
+          click(this, num);
+        }
+    }
+  }
+}
+
+function click(tag, num) {
+  tag.dataset.clicked = "true";
+  currentWord.innerHTML += tag.innerHTML;
+  lastLetter.push(num);
+}
+
+function unclick(tag, num) {
+  lastLetter = lastLetter.splice(0, - 1);
+  tag.dataset.clicked = "false";
+  currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
 }
 
 function nextValidMove(num) {
   num = parseInt(num);
   let validArray = [];
-  // validArray.push(num + 5);
-  // validArray.push(num - 5);
-  // validArray.push(num + 1);
-  // validArray.push(num - 5);
-  // validArray.push(num + 6);
-  // validArray.push(num + 4);
-  // validArray.push(num - 6);
-  // validArray.push(num - 4);
-  // console.log(num);
 
   if (!(num <= 4)) validArray.push(num - 5);
   if (!(num <= 4) && !(num === 4 || num === 9 || num === 14 || num === 19 || num ===24)) validArray.push(num - 4);
@@ -83,7 +85,7 @@ function nextValidMove(num) {
   if (!(num >= 20) && !(num === 0 || num === 5 || num === 10 || num === 15 || num ===20)) validArray.push(num + 4);
   if (!(num === 4 || num === 9 || num === 14 || num === 19 || num ===24)) validArray.push(num + 1);
   if (!(num === 0 || num === 5 || num === 10 || num === 15 || num ===20)) validArray.push(num - 1);
-  
+
   return validArray;
 }
 
