@@ -109,7 +109,7 @@ function shuffleDice(diceArray) {
 }
 
 function submit() {
-  let word = currentWord.innerHTML.slice(14);
+  let word = currentWord.innerHTML.slice(19);
   let points = calcPoints(word);
 
   let row = table.insertRow(1);
@@ -120,7 +120,8 @@ function submit() {
   </tr>`
 
 
-  currentWord.innerHTML = currentWord.innerHTML.slice(0,14);
+  currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
+
   lastLetter = [];
   let dice = board.querySelectorAll('.dice');
   dice.forEach(dice => dice.dataset.clicked = "false");
