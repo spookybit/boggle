@@ -3,7 +3,7 @@ const currentWord = document.querySelector('.currentWord');
 const table = document.querySelector('.wordTable');
 
 let lastLetter = [];
-let curWord = "";
+let curWord = "Current Word: ";
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -38,7 +38,8 @@ function shake(dice, board){
     if (letter === "Q") {
       letter = "Qu";
     }
-    return `<span class="dice" data-clicked=false data-number=${parseInt(i)}><span class="letter">${letter}</span></span>`
+    curWord += letter;
+    return `<span class="dice" data-clicked=false data-number=${parseInt(i)}><p class="letter">${letter}</p></span>`
   }).join('');
 
   const stuff = board.querySelectorAll(".dice")
@@ -110,11 +111,6 @@ function shuffleDice(diceArray) {
 function submit() {
   let word = currentWord.innerHTML.slice(14);
   let points = calcPoints(word);
-
-  // table.innerHTML += `<tr>
-  // <td>${word}</td>
-  // <td class="points">${points}</td>
-  // </tr>`
 
   let row = table.insertRow(1);
 

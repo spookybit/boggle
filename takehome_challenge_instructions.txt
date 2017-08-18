@@ -72,6 +72,3 @@ Point values for words scored in Boggle are determined by the length of the word
     * 6 letters: 3 points
     * 7 letters: 5 points
     * 8 or more letters: 11 points
-
-
-

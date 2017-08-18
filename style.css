@@ -52,6 +52,15 @@ img {
   font-weight: bold;
 }
 
+.currentWord {
+  display: flex;
+  flex-direction: row;
+}
+
+.currentWord p {
+  margin: 0px;
+}
+
 .wordTable {
   background-color: #FFCA08;
   /*border: 5px solid #FFCA08;*/
