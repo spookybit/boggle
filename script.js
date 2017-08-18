@@ -74,9 +74,9 @@ function unclick(tag, num) {
 
   tag.dataset.clicked = "false";
   if (currentWord.innerHTML.slice(wordLength - 2)  === "Qu") {
-    currentWord.innerHTML = currentWord.innerHTML.slice(0, -2);
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -24);
   } else {
-    currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -23);
   }
 }
 
