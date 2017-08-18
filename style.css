@@ -67,6 +67,10 @@ img {
   align-self: left;
 }
 
+.wordTable p {
+  margin: 0px;
+}
+
 .wordTable tr {
   background-color: white;
   text-align: left;
@@ -77,6 +81,11 @@ img {
   padding-left: 7px;
 }
 
+.entry {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
 
 .wordTable th:nth-child(1), .wordTable td:nth-child(1){
   width: 100px;

@@ -115,7 +115,7 @@ function submit() {
   let row = table.insertRow(1);
 
   row.innerHTML = `<tr>
-  <td>${word}</td>
+  <td class="entry">${word}</td>
   <td class="points">${points}</td>
   </tr>`
 
