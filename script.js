@@ -63,8 +63,14 @@ function toggleDice(e) {
 }
 
 function click(tag, num) {
+  let letter;
+  if (tag.innerHTML.slice(-6, -4) === 'Qu') {
+    letter = tag.innerHTML.slice(-6, -4).toUpperCase();
+  } else {
+    letter = tag.innerHTML.slice(-5, -4);
+  }
   tag.dataset.clicked = "true";
-  currentWord.innerHTML += tag.innerHTML.slice(-5, -4);
+  currentWord.innerHTML += letter;
   lastLetter.push(num);
 }
 
@@ -73,7 +79,7 @@ function unclick(tag, num) {
   lastLetter = lastLetter.slice(0, (lastLetter.length - 1));
 
   tag.dataset.clicked = "false";
-  if (currentWord.innerHTML.slice(wordLength - 2)  === "Qu") {
+  if (currentWord.innerHTML.slice(wordLength - 2)  === "QU") {
     currentWord.innerHTML = currentWord.innerHTML.slice(0, -2);
   } else {
     currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
@@ -109,18 +115,18 @@ function shuffleDice(diceArray) {
 }
 
 function submit() {
-
   let word = currentWord.innerHTML.slice(19);
-
   if (word.length === 0) return;
 
   let points = calcPoints(word);
   let row = table.insertRow(1);
 
-  row.innerHTML = `<tr>
+  row.className = "addedWord";
+
+  row.innerHTML = `
   <td class="entry">${word}</td>
   <td class="points">${points}</td>
-  </tr>`
+  `
 
 
   currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
@@ -151,6 +157,14 @@ function calcPoints(word) {
 
 function reset() {
   shake(dice, board);
+  lastLetter = [];
+  currentWord.innerHTML = "Current Word:&nbsp;";
+
+  let removeRows = table.querySelectorAll(".addedWord");
+  removeRows.forEach(row => row.remove());
+
+  let total = table.querySelector('.total');
+  total.innerHTML = 0;
 }
 
 shake(dice, board);
