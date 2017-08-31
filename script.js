@@ -109,14 +109,12 @@ function shuffleDice(diceArray) {
 }
 
 function submit() {
+
   let word = currentWord.innerHTML.slice(19);
 
-  console.log(currentWord.innerHTML);
-  console.log(word);
-  console.log(word.innerHTML);
+  if (word.length === 0) return;
 
   let points = calcPoints(word);
-
   let row = table.insertRow(1);
 
   row.innerHTML = `<tr>
@@ -142,7 +140,6 @@ function submit() {
 }
 
 function calcPoints(word) {
-  console.log(word);
   let length = word.length;
   if (length <= 2) return 0;
   if (length <= 4) return 1;
