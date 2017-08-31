@@ -98,3 +98,7 @@ img {
 [data-clicked="true"] {
   background-color: #ACCEEC;
 }
+
+.reset {
+  margin-top: 10px;
+}
