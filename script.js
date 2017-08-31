@@ -64,7 +64,7 @@ function toggleDice(e) {
 
 function click(tag, num) {
   tag.dataset.clicked = "true";
-  currentWord.innerHTML += tag.innerHTML;
+  currentWord.innerHTML += tag.innerHTML.slice(-5, -4);
   lastLetter.push(num);
 }
 
@@ -74,9 +74,9 @@ function unclick(tag, num) {
 
   tag.dataset.clicked = "false";
   if (currentWord.innerHTML.slice(wordLength - 2)  === "Qu") {
-    currentWord.innerHTML = currentWord.innerHTML.slice(0, -24);
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -2);
   } else {
-    currentWord.innerHTML = currentWord.innerHTML.slice(0, -23);
+    currentWord.innerHTML = currentWord.innerHTML.slice(0, -1);
   }
 }
 
@@ -110,6 +110,11 @@ function shuffleDice(diceArray) {
 
 function submit() {
   let word = currentWord.innerHTML.slice(19);
+
+  console.log(currentWord.innerHTML);
+  console.log(word);
+  console.log(word.innerHTML);
+
   let points = calcPoints(word);
 
   let row = table.insertRow(1);
@@ -137,6 +142,7 @@ function submit() {
 }
 
 function calcPoints(word) {
+  console.log(word);
   let length = word.length;
   if (length <= 2) return 0;
   if (length <= 4) return 1;
@@ -144,6 +150,10 @@ function calcPoints(word) {
   if (length === 6) return 3;
   if (length === 7) return 5;
   if (length >= 8) return 11;
+}
+
+function reset() {
+  shake(dice, board);
 }
 
 shake(dice, board);
