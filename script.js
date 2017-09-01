@@ -5,7 +5,7 @@ const timer = document.querySelector('.timer');
 
 let lastLetter = [];
 let curWord = "Current Word: ";
-let seconds = 180;
+let seconds = 10;
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -117,6 +117,7 @@ function shuffleDice(diceArray) {
 }
 
 function submit() {
+  if (seconds <= 0) return;
   let word = currentWord.innerHTML.slice(19);
   if (word.length === 0) return;
 
@@ -161,6 +162,7 @@ function countdown() {
   timer.innerHTML = `${seconds} seconds`;
 
   setInterval (function() {
+    if (seconds <= 0) return;
     seconds -= 1;
     timer.innerHTML = `${seconds} seconds`;
   }, 1000);
