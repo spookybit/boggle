@@ -95,6 +95,19 @@ img {
   padding: 5 5 5 5;
 }
 
+.tableRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%
+}
+
+.timerReset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 [data-clicked="true"] {
   background-color: #ACCEEC;
 }
