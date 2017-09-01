@@ -5,7 +5,7 @@ const timer = document.querySelector('.timer');
 
 let lastLetter = [];
 let curWord = "Current Word: ";
-let seconds = 10;
+let seconds = 180;
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -159,7 +159,7 @@ function calcPoints(word) {
 }
 
 function countdown() {
-  timer.innerHTML = `${seconds} seconds`;
+  timer.innerHTML = `180 seconds`;
 
   setInterval (function() {
     if (seconds <= 0) return;
@@ -178,6 +178,9 @@ function reset() {
 
   let total = table.querySelector('.total');
   total.innerHTML = 0;
+
+  seconds = 180;
+  timer.innerHTML = `${seconds} seconds`;
 }
 
 shake(dice, board);
