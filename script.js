@@ -6,6 +6,7 @@ const timer = document.querySelector('.timer');
 let lastLetter = [];
 let curWord = "Current Word: ";
 let seconds = 180;
+let wordBank = [];
 
 const dice = ['aaafrs',
 'aaeeee',
@@ -119,7 +120,9 @@ function shuffleDice(diceArray) {
 function submit() {
   if (seconds <= 0) return;
   let word = currentWord.innerHTML.slice(19);
+
   if (word.length === 0) return;
+  if (wordBank.includes(word)) return;
 
   let points = calcPoints(word);
   let row = table.insertRow(1);
@@ -131,6 +134,7 @@ function submit() {
   <td class="points">${points}</td>
   `
 
+  wordBank.push(word);
 
   currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
 
