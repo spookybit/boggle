@@ -143,23 +143,22 @@ function submit() {
   currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
 
   clearPickedLetters();
-
-  // lastLetter = [];
-  // let dice = board.querySelectorAll('.dice');
-  // dice.forEach(dice => dice.dataset.clicked = "false");
-
-  let totalPoints = 0;
-  let allPoints = table.querySelectorAll('.points');
-  allPoints.forEach(row => totalPoints += parseInt(row.innerHTML));
-
-  let total = table.querySelector('.total');
-  total.innerHTML = totalPoints;
+  updatePoints();
 }
 
 function clearPickedLetters(){
   lastLetter = [];
   let dice = board.querySelectorAll('.dice');
   dice.forEach(dice => dice.dataset.clicked = "false");
+}
+
+function updatePoints(){
+  let totalPoints = 0;
+  let allPoints = table.querySelectorAll('.points');
+  allPoints.forEach(row => totalPoints += parseInt(row.innerHTML));
+
+  let total = table.querySelector('.total');
+  total.innerHTML = totalPoints;
 }
 
 function calcPoints(word) {
