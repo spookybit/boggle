@@ -124,6 +124,7 @@ function submit() {
   if (word.length === 0) return;
   if (wordBank.includes(word)) {
     currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
+    clearPickedLetters();
     return;
   }
 
@@ -141,9 +142,11 @@ function submit() {
 
   currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
 
-  lastLetter = [];
-  let dice = board.querySelectorAll('.dice');
-  dice.forEach(dice => dice.dataset.clicked = "false");
+  clearPickedLetters();
+
+  // lastLetter = [];
+  // let dice = board.querySelectorAll('.dice');
+  // dice.forEach(dice => dice.dataset.clicked = "false");
 
   let totalPoints = 0;
   let allPoints = table.querySelectorAll('.points');
@@ -151,8 +154,12 @@ function submit() {
 
   let total = table.querySelector('.total');
   total.innerHTML = totalPoints;
+}
 
-
+function clearPickedLetters(){
+  lastLetter = [];
+  let dice = board.querySelectorAll('.dice');
+  dice.forEach(dice => dice.dataset.clicked = "false");
 }
 
 function calcPoints(word) {
