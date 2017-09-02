@@ -122,7 +122,10 @@ function submit() {
   let word = currentWord.innerHTML.slice(19);
 
   if (word.length === 0) return;
-  if (wordBank.includes(word)) return;
+  if (wordBank.includes(word)) {
+    currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
+    return;
+  }
 
   let points = calcPoints(word);
   let row = table.insertRow(1);
