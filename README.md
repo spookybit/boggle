@@ -7,6 +7,7 @@ Simple boggle clone made entirely out of javascript and HTML elements. Uses quer
 Rules:
 180 seconds to enter as many words as you can
 Letters forming a word must be chained next to the last letter selected
+No repeat words allowed
 
 ![image1](assets/image1.png)
 
