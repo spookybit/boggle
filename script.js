@@ -2,6 +2,8 @@ const board = document.querySelector('.board');
 const currentWord = document.querySelector('.currentWord');
 const table = document.querySelector('.wordTable');
 const timer = document.querySelector('.timer');
+// const modalButton = document.querySelector('.modalButton');
+const modal = document.querySelector('.modal');
 
 let lastLetter = [];
 let curWord = "Current Word: ";
@@ -129,16 +131,18 @@ function submit() {
   }
 
   let points = calcPoints(word);
-  let row = table.insertRow(1);
+  if (points > 0) {
+    let row = table.insertRow(1);
 
-  row.className = "addedWord";
+    row.className = "addedWord";
 
-  row.innerHTML = `
-  <td class="entry">${word}</td>
-  <td class="points">${points}</td>
-  `
+    row.innerHTML = `
+    <td class="entry">${word}</td>
+    <td class="points">${points}</td>
+    `
 
-  wordBank.push(word);
+    wordBank.push(word);
+  }
 
   currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
 
@@ -195,6 +199,16 @@ function reset() {
   seconds = 180;
   timer.innerHTML = `${seconds} seconds`;
 }
+
+function openModal() {
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+modal.addEventListener('click', closeModal);
 
 shake(dice, board);
 countdown();
