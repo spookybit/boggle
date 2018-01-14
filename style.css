@@ -116,11 +116,15 @@ img {
   margin-top: 10px;
 }
 
+p:first-of-type {
+  text-align: center;
+}
+
 .modal {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 20%;
     left: 0;
     top: 0;
     width: 100%;
@@ -128,12 +132,20 @@ img {
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    font-family: sans-serif;
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #F19350;
     margin: auto;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
+}
+
+.error{
+  display: none;
+  background-color: red;
+  padding: 7px 4px 4px 4px;
+  border-radius: 10px;
 }

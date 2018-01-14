@@ -4,6 +4,7 @@ const table = document.querySelector('.wordTable');
 const timer = document.querySelector('.timer');
 // const modalButton = document.querySelector('.modalButton');
 const modal = document.querySelector('.modal');
+const error = document.querySelector('.error');
 
 let lastLetter = [];
 let curWord = "Current Word: ";
@@ -142,6 +143,9 @@ function submit() {
     `
 
     wordBank.push(word);
+  } else {
+    error.style.display = "inline-block";
+    setTimeout(function() {error.style.display = "none";}, 1500)
   }
 
   currentWord.innerHTML = currentWord.innerHTML.slice(0,19);
